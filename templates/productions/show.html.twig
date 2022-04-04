@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block title %}Productions{% endblock %}
+{% block stylesheets %}
+<style>
+.production-title
+{
+  display :flex ;
+  justify-content : center ; 
+  color : white ;
+  margin : 10px; 
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class= "production-title" >
+    <h1>{{ production.title }}</h1>
+</div>
+    
+     
+            
+                <div id="Mycarousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+  {% for image in production.images %}
+    <div {% if loop.index0 == 0 %} class="carousel-item active" {% else %} class="carousel-item" {% endif %} >
+      <img class="d-block w-100" src="{{asset('/images/' ~ image.name)}}" alt="">
+    </div>
+    {% endfor %}
+  <a class="carousel-control-prev" href="#Mycarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#Mycarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  </div>
+   </div>
+<br/>
+
+   <a class ="btn-lg btn-primary" role = "button" href="{{ path('productions_index') }}">Retour à nos travaux</a></button>
+<br/>
+<br/>
+{% if is_granted("ROLE_ADMIN") %}
+    <a class ="btn-lg btn-primary" role = "button" href="{{ path('productions_edit', {'id': production.id}) }}">Editer</a></button>
+{% endif %}
+{% endblock %}

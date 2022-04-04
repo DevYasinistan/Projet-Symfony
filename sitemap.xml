@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://www.amcem-menuiserie.fr/</loc>
+  <lastmod>2022-01-18T17:27:30+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.amcem-menuiserie.fr/productions/</loc>
+  <lastmod>2022-01-18T17:27:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.amcem-menuiserie.fr/contact</loc>
+  <lastmod>2022-01-18T17:27:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.amcem-menuiserie.fr/commentaires</loc>
+  <lastmod>2022-01-18T17:27:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.amcem-menuiserie.fr/login</loc>
+  <lastmod>2022-01-18T17:27:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.amcem-menuiserie.fr/register</loc>
+  <lastmod>2022-01-18T17:27:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.amcem-menuiserie.fr/mentions-legale</loc>
+  <lastmod>2022-01-18T17:27:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.amcem-menuiserie.fr/confidentialite</loc>
+  <lastmod>2022-01-18T17:27:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.amcem-menuiserie.fr/productions/9</loc>
+  <lastmod>2022-01-18T17:27:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.amcem-menuiserie.fr/productions/10</loc>
+  <lastmod>2022-01-18T17:27:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.amcem-menuiserie.fr/productions/12</loc>
+  <lastmod>2022-01-18T17:27:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

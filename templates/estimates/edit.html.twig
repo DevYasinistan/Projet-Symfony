@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Estimates{% endblock %}
+
+{% block body %}
+    <h1>Edit Estimates</h1>
+
+    {{ include('estimates/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('estimates_index') }}">back to list</a>
+
+    {{ include('estimates/_delete_form.html.twig') }}
+{% endblock %}

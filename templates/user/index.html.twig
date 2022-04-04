@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block stylesheets %}
+<style> 
+.index{
+display :flex ; 
+flex-wrap : wrap ; 
+max-width :1000px;
+min-width : 200px ;
+}
+span 
+{
+font-weight : bold ;
+
+}
+
+p{
+    
+    color :black ;
+}
+
+
+.index-user
+{
+  display :flex ;  
+  flex-direction : column;
+  width : 231.3px ; 
+  background-color : grey ;   
+  margin : 10px ; 
+  padding : 10px ;  
+}
+
+</style>
+
+{% endblock %}
+{% block content %}
+
+    <h1>Tous les utilisateurs</h1>
+
+    
+                
+           
+                
+                
+               
+            
+        
+        <section class="index">
+        {% for user in users %}
+       
+           <div class ="index-user">
+               <p><span> Email</span> :</br> {{ user.email }}</p>
+              <p> <span>Roles</span> :</br>{{ user.roles ? user.roles|json_encode : '' }}</p>
+
+                    <a class ="btn btn-lg btn-primary" roles="button" href="{{ path('user_edit', {'id': user.id}) }}">Editer</a>
+                    </div>
+              
+             
+        {% else %}
+          
+                <td colspan="5">no records found</td>
+           
+        {% endfor %}
+      
+</section>
+    <a class ="btn btn-lg btn-primary" roles="button" href="{{ path('user_new') }}">Créer un nouvel utilisateur</a>
+
+{% endblock %}

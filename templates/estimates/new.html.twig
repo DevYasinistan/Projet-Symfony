@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demandez votre devis{% endblock %}
+
+{% block content %}
+    <section class="form-contact">
+   <div class="widget-contact"> 
+
+<h1 class ="h3 mb-3 font-weight-normal titre-login">Demandez un devis</h1>
+
+    {{ include('estimates/_form.html.twig') }}
+
+   
+    </div>
+    </section>
+{% endblock %}

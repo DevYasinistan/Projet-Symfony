@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+        
+        
+{% block title %}Nos Travaux{% endblock %}
+
+{% block content %}
+<div class = "t-prod">
+    <h1 class = "titre-prod">Nos travaux</h1>
+</div>
+
+
+        
+        {% for production in productions %}
+        
+          <section class = "travaux">
+          <div class ="prod-content">
+
+              <div class ="titre-article">
+               <h4 class ="titre-prod">{{ production.title}}</h4>
+               </div>
+              </br>
+              
+               <p class="prod-article">{{production.content}}</p>
+                <div class="date-content">
+             <p class ="date-productions">Publié le : {{production.createdAt.format('d/m/Y H:i')}} </p> 
+             </div>
+               </div>
+              
+               
+
+
+ <div class ="carousel-prod">                
+<div  id="Mycarousel-{{loop.index}}" class="carousel slide" data-ride="carousel" >
+  <div class="carousel-inner">
+  {% for image in production.images %} 
+    <div {% if loop.index0 == 0 %} class="carousel-item active" {% else %} class="carousel-item" {% endif %} >
+      <img class="d-block w-100 img-carousel-prod" src="{{asset('/images/' ~ image.name)}}" alt=""images n°{{loop.index0}}"">
+    </div>
+     {% endfor %}
+  <a class="carousel-control-prev" href="#Mycarousel-{{loop.index}}" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#Mycarousel-{{loop.index}}" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+ </div>
+
+
+
+</br>
+        
+               
+                
+                    <a class ="btn-lg btn-primary" role = "button" href="{{ path('productions_show', {'id': production.id}) }}">Voir les images</a>
+                    </br></br>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <a class ="btn-lg btn-primary" role = "button" href="{{ path('productions_edit', {'id': production.id}) }}">Editer l'article</a>
+                    {% endif %}
+        </div>        
+</section>            
+        {% else %}
+           
+                <td colspan="4">no records found</td>
+ </section>           
+        {% endfor %}
+        
+
+
+    </br>
+    {% if is_granted("ROLE_ADMIN") %}
+    <a class ="btn-lg btn-primary" role = "button" href="{{ path('productions_new') }}">Crée un nouvel article</a>
+    {% endif %}
+{% endblock %}

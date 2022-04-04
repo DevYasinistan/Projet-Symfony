@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block content %}
+<style>
+/*formulaire modifier article*/
+.edit-user {
+  border-radius: 5%;
+  background-color: #a0a3a1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10%;
+  padding: 10px;
+}
+
+.titre-edit-user{
+  color: #21262b;
+  font-size: 70px;
+  padding-bottom: 40px;
+}
+
+.btn-devis {
+  margin: 30px;
+}
+</style>
+<div class="edit-user">
+<div class = "titre-edit-user">
+    <h1 class ="user-new">Modifier un utilisateur</h1>
+</div>
+    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+
+    {{ include('user/_delete_form.html.twig') }}
+     <a href="{{ path('user_index') }}">back to list</a>
+     </div>
+{% endblock %}

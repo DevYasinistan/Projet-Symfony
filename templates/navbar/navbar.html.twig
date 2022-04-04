@@ -1,0 +1,83 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <a style= "color:#ccac00" class="navbar-brand logo" href="{{ path('app_frontend_home')}}">AMCEM<span class = "menuiserie"> Menuiserie</span> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{path('productions_index')}}">Nos Travaux<span class="sr-only">(current)</span></a>
+      </li>
+      {% if is_granted('ROLE_ADMIN') %}
+       <li class="nav-item">
+        <a class="nav-link" href="{{path('contact_index')}}">Les messages</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{path('contact_new')}}">Contact</a>
+      </li>
+      {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{path('app_comments_commentaire')}}">Les commentaires</a>
+      </li>
+      {% if is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') %}
+      <li class="nav-item ">
+        <a class="nav-link" href="{{path('estimates_new')}}">Demander un devis</a>
+      </li>
+      {% elseif  is_granted('ROLE_ADMIN') %}
+       <li class="nav-item ">
+        <a class="nav-link" href="{{path('estimates_index')}}">Voir les devis</a>
+      </li>
+      
+       {% else %}
+        <li class="nav-bar-nav ">
+        <a class="nav-link" href="{{path('app_login')}}">Demander un devis</a>
+      </li>
+      
+      {% endif %}
+       {% if is_granted('ROLE_ADMIN') %}
+       <li class="nav-item">
+        <a class="nav-link" href="{{path('user_index')}}">Voir les utilisateurs</a>
+      </li>
+      
+      {% endif %}
+
+      </ul>
+       {% if is_granted('ROLE_USER') %}
+       
+      <ul class ="navbar-nav">
+          <li class="nav-item">
+          <a class="nav-link" href="{{path ('app_logout')}}">Se deconnecter</a>
+        </li>
+         <div class= "img-user">
+        <li class="nav-item">
+          <a href = "#"><img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png"/></a>
+        </li>
+        </div>
+         <li class="nav-item">
+          <a class="nav-link" href="#">{{app.user.email}}</a>
+        </li>
+
+        {% else %}
+<ul class ="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link " href="{{path('app_login')}}">Se connecter</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link  " href="{{path('app_register')}}">S'inscrire</a>
+      </li>
+      {% endif %}
+
+    
+    </ul>
+  </div>
+</nav>
+
+              {% for message in app.flashes('success')  %}
+<div class"alert">
+<p>{{ message }}</p>
+</div>
+{% endfor %}
+
+

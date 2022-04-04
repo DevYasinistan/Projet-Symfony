@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    {% if app.request.attributes.get('_route') == 'annonces_edit'%}
+    <h2>Images</h2>
+    {% endif %}
+    {% for image in production.images %}
+    <div>
+    <img src="{{asset('/images/' ~ image.name) }}" alt ="image" width="150"> 
+    <a href = "{{ path('production_delete_image', {'id': image.id}) }}"
+    data-delete data-token="{{ csrf_token('delete' ~ image.id)}}">Supprimer</a> 
+    </div> 
+    {% endfor %}
+    <button class="btn btn-lg btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

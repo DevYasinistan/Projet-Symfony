@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Estimates index{% endblock %}
+
+
+{% block stylesheets %}
+<style> 
+.index{
+display :flex ; 
+flex-wrap : wrap ; 
+max-width :1000px;
+min-width : 200px ;
+}
+span 
+{
+font-weight : bold ;
+
+}
+
+p{
+    
+    color :black ;
+}
+
+
+.index-user
+{
+  display :flex ;  
+  flex-direction : column;
+  width : 231.3px ; 
+  background-color : grey ;   
+  margin : 10px ; 
+  padding : 10px ;  
+}
+
+</style>
+
+{% endblock %}
+{% block content %}
+
+    <h1>Vos demandes de Devis</h1>
+
+    
+                
+           
+                
+            
+        <section class="index">
+        {% for estimate in estimates %}
+       
+           <div class ="index-user">
+               <p><span> Email</span> :</br> {{ estimate.email }}</p>
+              <p> <span>Numero de telephone</span> :</br>{{ estimate.phonenumber }}</p>
+              <p> <span>Travaux souhaiter</span> :</br>{{ estimate.travaux }}</p>
+              <p> <span>Pays</span> :</br>{{ estimate.pays  }}</p>
+              <p> <span>adresse</span> :</br>{{ estimate.adresse}}</p>
+              <p> <span>Message</span> :</br>{{ estimate.message }}</p>
+             <p> <span>Envoyer le : </span> :</br>{{ estimate.createdAt.format('d/m/Y H:i')}}</p>
+
+                    </div>
+                    </section>
+              {{ include('estimates/_delete_form.html.twig') }}
+              {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+         {% endfor %}  
+
+         {% endblock %}

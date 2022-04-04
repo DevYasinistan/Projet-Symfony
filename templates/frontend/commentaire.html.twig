@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+{% block stylsheets %}  
+
+{% endblock %}
+
+{# on affiche les commentaires#}
+
+<h2 class ="title">Liste des commentaires</h2>
+
+{% for comment in comments %}
+
+    {% if comment.parent == null %}
+    
+         
+ <div class ="commentaire">
+ <div class="comments"> 
+                <h4><img src ="https://i.pinimg.com/474x/76/4d/59/764d59d32f61f0f91dec8c442ab052c5.jpg"> {{ comment.nickname }} <span class="dot mb-1"></span> <span class="hour">{{ comment.createdAt.format('d/m/Y H:i')}}</span></h4> 
+                <br/>
+                <p class= "comment-content">{{ comment.content }}</p>
+                {% if is_granted("ROLE_ADMIN") %}
+                <a class ="btn btn-lg btn-primary" role ="button" href='#ajout-commentaires' data-reply data-id="{{comment.id}}">Repondre</a>
+                </br></br>
+                <p><a class ="btn btn-lg btn-primary" role ="button" href="{{ path ('app_comments_delete', {id: comment.id})}}"> Supprimer le commentaire</a></p>
+                {% endif %}
+                 <br/>  
+                 </div>
+</div>
+                  
+            {# on affiche les reponse des commentaires#}
+
+            {% for reply in comment.replies %}
+           <div class ="reponse">
+           <div class ="response">
+                 <p class ="comment-content" >Reponse de <strong>{{ reply.nickname }}</strong> <span class="dot mb-1"></span>   {{ reply.createdAt.format('d/m/Y H:i')}}</p>  </br>
+                 <p class ="comment-content">{{ reply.content }}</p>
+                 </div>
+                <br/>
+                </div>
+               
+{% endfor %}
+
+{% endif %}
+ 
+{% endfor %}
+
+{% if is_granted("ROLE_USER")  %}
+<div id="ajout-commentaires" class = "formulaire-commentaire">
+
+<h2 id="repondre" >Ajoutez un commentaire</h2>
+
+{{form(form)}}
+</div>
+
+{% else %}
+<h1 class ="login-comment">Connectez-vous pour ajouter un commentaire en cliquant<a href ="{{path('app_login')}}"> ici</a></h1>
+<h1 class ="login-comment">ou inscrivez-vous en cliquant<a href = "{{path('app_register')}}"> ici</a></h1>
+
+
+{% endif %}
+
+{% block javascript %}
+<script> 
+window.onload = () => {
+
+document.querySelectorAll("[data-reply]").forEach(element => {
+    element.addEventListener("click", function(){
+        
+       document.querySelector("#comments_parent").value = this.dataset.id;
+       document.getElementById("repondre").innerHTML = "<h2> Repondre au commentaires </h2> ";
+
+
+    })
+
+})
+
+
+}
+
+
+</script>
+{% endblock %}
+{% endblock %}

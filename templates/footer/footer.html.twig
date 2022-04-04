@@ -1,0 +1,133 @@
+
+<div class="">
+ 
+  <footer class="text-center text-white" style="background-color: #343A40">
+  
+    <div class="container">
+      <section class="mt-5">
+        <div class="row text-center d-flex justify-content-center pt-5">
+   
+          <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="{{path('productions_index')}}" class="text-white">Nos travaux</a>
+            </h6>
+          </div>
+          <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="{{path('app_comments_commentaire')}}" class="text-white">Commentaires</a>
+            </h6>
+          </div>
+          {% if is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') %}
+          <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="{{path('estimates_new')}}" class="text-white">Demander un devis</a>
+            </h6>
+          </div>
+          {% elseif is_granted('ROLE_ADMIN') %}
+          <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="{{path('estimates_index')}}" class="text-white">Voir les devis</a>
+            </h6>
+          </div>
+          {% else %}
+           <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="{{path('app_login')}}" class="text-white">Demander un devis</a>
+            </h6>
+          </div>
+          {% endif %}
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          {% if is_granted('ROLE_USER') %}
+          <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="{{path ('app_logout')}}" class="text-white">Se deconnecter</a>
+            </h6>
+          </div>
+          {% else %}
+  <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="{{path('app_login')}}" class="text-white">Se connecter</a>
+            </h6>
+          </div>
+          {% endif %}
+          <!-- Grid column -->
+
+          {% if is_granted('ROLE_ADMIN') %}
+          <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="{{path('contact_index')}}" class="text-white">Les messages</a>
+            </h6>
+          </div>
+           {% else %}
+           <div class="col-md-2">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="{{path('contact_new')}}" class="text-white">Nous contacter</a>
+            </h6>
+          </div>
+
+          {% endif %}
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row-->
+      </section>
+      <!-- Section: Links -->
+
+      <hr class="my-5" />
+
+      <!-- Section: Text -->
+      <section class="mb-5">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8">
+            <p>
+            AMCEM Menuiserie spécialiste dans le travail du bois et du PVC.</br>
+            Numéro de téléphone :<strong> 07  83  51  13  03 </strong> </br>
+            Email : <strong> amcem@amcem-menuiserie.fr</strong>  
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Section: Text -->
+
+      <!-- Section: Social -->
+      <section class="text-center mb-5">
+        <a href="" class="text-white me-4">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-github"></i>
+        </a>
+      </section>
+      <!-- Section: Social -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div
+         class="text-center p-3"
+         style="background-color: rgba(0, 0, 0, 0.2)"
+         >
+      © 2020 Copyright:
+      <a class="text-white" href="#"
+         >AMCEM Menuiserie |</a>
+         <a class="text-white" href="{{ path('app_rgpd_mention')}}"
+         >Mentions légales |</a><a class="text-white" href="{{ path('app_rgpd_conf')}}"
+         > Politique de confidentialité</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</div>

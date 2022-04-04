@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact index{% endblock %}
+
+{% block stylesheets %}
+<style> 
+.index{
+display :flex ; 
+flex-wrap : wrap ; 
+max-width :1000px;
+min-width : 200px ;
+}
+span 
+{
+font-weight : bold ;
+
+}
+
+p{
+    
+    color :black ;
+}
+
+
+.index-user
+{
+  display :flex ;  
+  flex-direction : column;
+  width : 231.3px ; 
+  background-color : grey ;   
+  margin : 10px ; 
+  padding : 10px ;  
+}
+
+</style>
+
+{% endblock %}
+{% block content %}
+
+
+{% for message in app.flashes('success')  %}
+
+<div class"alert alert-success">
+{{ message }}
+</div>
+{% endfor %}
+
+    <h1>Vos demandes de contact</h1>
+
+    
+                
+           
+                
+            
+        <section class="index">
+        {% for contact in contacts %}
+       
+           <div class ="index-user">
+               <p><span> Email</span> :</br> {{ contact.email }}</p>
+              <p> <span>Message</span> :</br>{{ contact.message }}</p>
+             <p> <span>Envoyer le :</span> :</br>{{ contact.createdAt.format('d/m/Y H:i')}}</p>
+                    </div>
+                    </section>
+              {{ include('contact/_delete_form.html.twig') }}
+         {% endfor %}    
+    
+{% endblock %}

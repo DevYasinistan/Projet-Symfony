@@ -1,19 +1,88 @@
+ 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="AMCEM-Menuiserie : spécialiste dans la menuiserie,
+        fabrication de meuble, pose de meuble, pose de fenétre et tous type de travaux bois et pvc.">
+        <title>{% block title %}AMCEM Menuiserie{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
-
+        {# {{ encore_entry_link_tags('app') }} #}
+       
+       
+         {% endblock %}
+       
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+        {# {{ encore_entry_script_tags('app') }} #}
+         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="/js/jquery.cookie.js"></script>
+  <script src="/js/parallax.js"></script>
         {% endblock %}
+      
     </head>
     <body>
-        {% block body %}{% endblock %}
+    
+        {% block body %}
+
+{% block nav %}
+        {% include "navbar/navbar.html.twig" %}
+ 
+
+{% endblock %}
+{% block carousel %}
+
+
+{% endblock %}
+{% block content %}
+ 
+
+
+
+
+{% endblock %}
+
+
+         {% block footer %}
+{% include "footer/footer.html.twig" %}
+        {% endblock %}
+{% endblock %}
+<script>
+ //COOKIE BAR//
+             (function($){
+
+                if($.cookie('cookiebar') === undefined) {
+                    $('body').append('<div class="cookie" id="cookie">Nous utilisons des cookies afin de vous offrir la meilleure expérience en ligne possible. En cliquant sur AUTORISER, vous acceptez l\'utilisation de cookies conformément à notre politique de cookies.  <a href="/politiques-de-confidentialite/#qu\'est-ce-qu\'un-cookie">En savoir plus</a><button class="cookie_btn" id="cookie_accept"> Autoriser</button><button class="cookie_btn cookie_btn-error " id="cookie_cancel">Refuser</button></div>');
+
+                    //Masquer la barre//
+                    $('#cookie_accept').click(function(e){
+                        e.preventDefault();
+                        $('#cookie').hide();
+                        $.cookie('cookiebar', "viewed", {expires: 30 * 12})
+                    });
+
+                    $('#cookie_cancel').click(function(e){
+                        e.preventDefault();
+                        $('#cookie').hide();
+                        $.cookie('cookiebar', "viewed", {expires: 30 * 12});
+                        $.cookie('cookiecancel', "1", {expires: 30 * 12});
+                    });
+
+                }
+
+                if ($.cookie('cookiecancel') === undefined){
+                    //                    alert('analytics');
+                }
+
+            })(jQuery);
+            </script>
+
     </body>
 </html>

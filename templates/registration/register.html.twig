@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscrivez-vous{% endblock %}
+
+
+{% block content %}
+<div class = "form-insc">
+<div class = "titre-inscription">
+    <h1 class="titre">Inscrivez-vous</h1>
+</div>
+
+    {{ form_start(registrationForm) }}
+    <div class = "email-ins">
+        {{ form_row(registrationForm.email) }}
+    </div>
+    <div class ="mdp-ins">
+        {{ form_row(registrationForm.plainPassword) }}
+    </div>
+     <div class ="agree-ins">
+   
+        {{ form_row(registrationForm.agreeTerms) }}
+ </div>
+ <div class ="btn-ins">
+        <button type="submit" class="btn btn-lg btn-primary btn-contact">Inscription</button>
+    {{ form_end(registrationForm) }}
+    </div>
+    </div>
+{% endblock %}
